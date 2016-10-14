@@ -1,11 +1,5 @@
----
-title: "README"
-output: html_document
----
+# README
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 This repositary is a companion to the paper *Tail Analysis without Parametric Models: A Worst-case Perspective* by Lam H., and Mottet C.. Here are made available ALL the tables, the datasets, and the figures given in the section  discussing numerical findings (Section 7). These results were generated using the [R](https://www.r-project.org/) statistical software (version 3.3.1). For transparency and reproducibility purposes, the R-codes used in the computations are also made available.
 
 We point out that these codes rely on functions available in the R packages *RobustTail* and *DistributionPty*  (see installation detail below), that we also developped. The motivation for building separate packages is to have readable, and coherently organized codes. More specifically,
