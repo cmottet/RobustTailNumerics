@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Notebook\"\noutput: html_document\n---\n\n\n## Confidence intervals\nThe goal of this section is to explore different type of non-parametric confidence intervals. To do so, we simulate a 300 points bivariate normal sample with mean (1,2) and covariance matrix (4,2;2,1). The sample is represented below.\n\n```{r, echo =FALSE}\nlibrary(dplyr)\nset.seed(100)\nn <- 300\nmu <- c(1,2)\nSigma <- matrix(c(6,2,2,1),ncol =2)\nsample <- MASS::mvrnorm(n,mu,Sigma) %>% as.data.frame\nnames(sample) <-  c(\"x\",\"y\")\n```\n\n```{r, echo = FALSE}\nlibrary(ggplot2)\ndataPlot <- sample\nplot <- ggplot(dataPlot,aes(x = x, y = y)) + geom_point() \nplot\n```\n\n## Rectangular confidence interval\nThe first interval we consider is rectangular joint confidence interval where the bounds of each marginal interval is obtained using quantiles with a Bonferroni correction.\n\n```{r,echo = FALSE}\nbonf <- ncol(sample) ; alpha <- 0.05\nquant <- apply(sample, 2, function(x)quantile(x, probs = c(alpha/(2*bonf), 1-alpha/(2*bonf)))) %>% as.data.frame\nCIrect <- expand.grid(x = quant$x,y = quant$y)[c(1,3,4,2),]\n\n\ngamma <- 5\nplot + \n  geom_polygon(data = CIrect, aes(x = x, y = y), colour = \"red\", fill = NA) + \n  stat_ellipse(type = \"norm\", colour = \"blue\") + \n  geom_segment(aes(x = colMeans(sample)[1], \n                   y = colMeans(sample)[2], \n                   xend = colMeans(sample)[1] +  gamma*PCA$rotation[1,1],\n                   yend = colMeans(sample)[2] + gamma*PCA$rotation[2,1]), col = \"green\") + \n  geom_segment(aes(x = colMeans(sample)[1], \n                   y = colMeans(sample)[2], \n                   xend = colMeans(sample)[1] +  gamma*PCA$rotation[1,2],\n                   yend = colMeans(sample)[2] +gamma*PCA$rotation[2,2]), col = \"green\") + \n  coord_fixed()\n  stat_ellipse(type = \"t\", colour = \"blue\")  + \n  stat_ellipse(type = \"t\", geom = \"polygon\")\n```\n\n```{r,echo = FALSE}\nplotCIrect <- plot + geom_polygon(data = CIrect, aes(x = x, y = y), colour = \"red\", fill = NA)\nplot\n```\n\n# t(csample)%*%csample\n# with(PCA, rotation%*%t(x)%*%x%*%t(rotation)) \n\n#plot <- ggExtra::ggMarginal(plot, type = \"histogram\")",
+    "created" : 1473712335819.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1772717257",
+    "id" : "ACC31327",
+    "lastKnownWriteTime" : 1473722546,
+    "last_content_update" : 1473722546294,
+    "path" : "/src/MyNoteBooks/RobustTail/Notebook.Rmd",
+    "project_path" : "Notebook.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
