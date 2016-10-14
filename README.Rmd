@@ -1,0 +1,36 @@
+---
+title: "README"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+This repositary is a companion to the paper *Tail Analysis without Parametric Models: A Worst-case Perspective* by Lam H., and Mottet C.. Here are made available ALL the tables, the datasets, and the figures given in the section  discussing numerical findings (Section 7). These results were generated using the [R](https://www.r-project.org/) statistical software (version 3.3.1). For transparency and reproducibility purposes, the R-codes used in the computations are also made available.
+
+We point out that these codes rely on functions available in the R packages *RobustTail* and *DistributionPty*  (see installation detail below), that we also developped. The motivation for building separate packages is to have readable, and coherently organized codes. More specifically,
+
+  * *RobustTail* is a package that focus on solving Equation (5) and (EC.19) in the specific case where only 2 point masses distribution functions are considered. In addition, *RobustTail* provides functions to estimate the parameters $\underline \eta$, $\overline \eta$, $\underline \beta$, $\overline \beta$, and $\overline \nu$ of program (11). 
+  * *DistributionPty*, as its name suggests, is a package containing functions related to the properties of some probability distributions functions. As an example, the function *Dlnorm* and *Dpareto* gives the derivatives of the log-Normal and the Pareto distribution. 
+ 
+## Installing  RobustTail and DistributionPty on your local machine
+
+To install RobustTail and DistributionPty on your local machine, you just need to run the following lines in R
+
+```
+install.packages("devtools")
+library(devtools)
+devtools::install_github("cmottet/RobustTail")
+devtools::install_github("cmottet/DistributionPty")
+```
+
+
+
+
+
+
+
+
+
+
+ 
