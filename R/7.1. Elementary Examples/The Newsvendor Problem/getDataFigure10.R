@@ -45,8 +45,8 @@ runFunc <- function(q){
     M <- pmax(q-a,0)
     mx <- pmin(x,q-a)
     
-    term1 <- q/2*(x-M)^2*(x >= M)
-    term2 <- (1/6*(mx+a)^3 - 1/6*a^3  -x*a^2/2 + q^2/2*(x - M)*(x >= M))*(mx >= 0)
+    term1 <- q/2*(x-M)^2*(x > M)
+    term2 <- (1/6*(mx+a)^3 - 1/6*a^3  -x*a^2/2 + q^2/2*(x + a -q)*(x + a > q))*(mx >= 0)
     
     output <-  price*(term1 + term2) 
     return(output)

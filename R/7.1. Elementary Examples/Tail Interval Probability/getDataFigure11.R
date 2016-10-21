@@ -18,7 +18,7 @@ runFunc <- function(a, c, d)
   
   # Define H
   H  <- function(x){
-    output <- 1/2*(x - max(c-a,0) )^2*( max(c-a,0) <= x) -  1/2*(x - max(d-a,0))^2*( max(d-a,0) <= x)
+    output <- 1/2*(x - max(c-a,0) )^2*( max(c-a,0) < x) -  1/2*(x - max(d-a,0))^2*( max(d-a,0) <= x)
   }
   
   # Define the parameters of the program (5)

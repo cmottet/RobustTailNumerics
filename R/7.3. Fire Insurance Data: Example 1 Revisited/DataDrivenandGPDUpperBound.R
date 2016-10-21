@@ -40,29 +40,31 @@ fitGPD <- QRM::fit.GPD(sample$Loss.in.DKM,threshold = u,type = "ml")
 h <- function(xi, beta) {
   if (xi <0) return("xi < 0. This case need to be added")
   
-  term1 <- (1-QRM::pGPD(d -u,xi,beta))*(d - u + beta)/(xi - 1)
+  term1 <- (1-QRM::pGPD(d -u,xi,beta))*(d  - u + beta)/(xi - 1)
   term2 <- (1-QRM::pGPD(c -u,xi,beta))*(max(c,u) - u + beta)/(xi - 1)
-  term3 <- d*(1-QRM::pGPD(d -u,xi,beta))
-  term4 <- c*(1-QRM::pGPD(c -u,xi,beta))
+  term3 <- (d - u)*(1-QRM::pGPD(d -u,xi,beta))
+  term4 <- (c - u)*(1-QRM::pGPD(c -u,xi,beta))
   
-  output <- (term1 - term2 + term3 - term4)*(d >= max(c,u))
+  xf <- if(xi >= 0) Inf else u - beta/xi
+  output <- (term1 - term2 + term3 - term4)*(min(xf,d) >= max(c,u))
   return(output)
 }
 
 hGrad <- function(xi,beta) 
 {
   term11Grad <- - gradientpGPD(d -u,xi,beta)*(d + beta - u)/(xi - 1) 
-  term12Grad <- matrix(c(-(d -u +beta),1),nrow = 2)*(1-QRM::pGPD(d -u,xi,beta))/(xi - 1)^2
+  term12Grad <- matrix(c(-(d -u +beta),xi -1),nrow = 2)*(1-QRM::pGPD(d -u,xi,beta))/(xi - 1)^2
   term1Grad <- term11Grad + term12Grad 
     
-  term21Grad <- - gradientpGPD(max(u,c) -u,xi,beta)*(max(u,c) + beta - u)/(xi - 1) 
-  term22Grad <- matrix(c(-(max(u,c) -u +beta),1),nrow = 2)*(1-QRM::pGPD(max(u,c) -u,xi,beta))/(xi - 1)^2
+  term21Grad <- - gradientpGPD(c -u,xi,beta)*(max(u,c) + beta - u)/(xi - 1) 
+  term22Grad <- matrix(c(-(max(u,c) -u +beta),xi -1),nrow = 2)*(1-QRM::pGPD(max(u,c) -u,xi,beta))/(xi - 1)^2
   term2Grad <- term21Grad + term22Grad 
   
-  term3Grad <- - d*gradientpGPD(d -u,xi,beta)
-  term4Grad <- - c*gradientpGPD(c -u,xi,beta)
+  term3Grad <- - (d - u)*gradientpGPD(d -u,xi,beta)
+  term4Grad <- - (c - u)*gradientpGPD(c -u,xi,beta)
   
-  output <- (term1Grad - term2Grad + term3Grad - term4Grad)*(d >= max(c,u))
+  xf <- if(xi >= 0) Inf else u - beta/xi
+  output <- (term1Grad - term2Grad + term3Grad - term4Grad)*(min(xf,d) >= max(c,u))
   return(output)
 }
 GPDbound <- asymptoticCIforGPDfit(fitGPD,h,hGrad,verbose = FALSE)

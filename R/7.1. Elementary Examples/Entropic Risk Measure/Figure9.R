@@ -6,10 +6,12 @@ library(dplyr)
 ### 
 ### Parameters of program 5 
 ###
-a <- qexp(0.7) 
-eta <- dexp(a) 
-nu <- dexp(a) 
-beta <- 1-pexp(a)
+library(DistributionPty)
+rate <- 1
+a <- qexp(0.7, rate) 
+beta <- 1- Dexp(a,D = 0,rate) 
+eta <- Dexp(a,D = 1,rate) 
+nu <- - Dexp(a,D = 2,rate) 
 
 mu <- eta/nu
 sigma <- 2*beta/nu
