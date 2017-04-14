@@ -1,8 +1,12 @@
 remove(list = ls())
+library(svglite)
+library(ggplot2)
+library(plyr)
+library(dplyr)
 
 # Load data
 load("data/syntDatalogNormal.RData")
-meanlog <- 0   
+meanlog <- 0
 sdlog <- 0.5
 
 ###
@@ -21,23 +25,19 @@ CI <- RobustTail::getCIMomentAndDerivatives(sample,
 save(CI,file = "data/syntDatalogNormalCI.RData")
 
 ###
-### Reformat CI as a data frame 
+### Reformat CI as a data frame
 ###
-library(ggplot2)
-library(plyr)
-library(dplyr)
-
 dataPlot <- NULL
 for (i in 1:length(CI))
 {
   a <- CI[[i]]$a
-  truth <- c(DistributionPty::Dlnorm(a,2,meanlog,sdlog), 
+  truth <- c(DistributionPty::Dlnorm(a,2,meanlog,sdlog),
              DistributionPty::Dlnorm(a,1,meanlog,sdlog),
-             1 - plnorm(a,meanlog,sdlog))
+             1 - DistributionPty::Dlnorm(a,0,meanlog,sdlog))
 
   newDataPlot <- data.frame(a = a,
-                            parameter = rep(c("Density derivative function", "Density function", "Tail distribution function"),3), 
-                            value = as.numeric(c(CI[[i]]$hyperrectangle[1,], CI[[i]]$hyperrectangle[2,], truth)), 
+                            parameter = rep(c("Density derivative function", "Density function", "Tail distribution function"),3),
+                            value = as.numeric(c(CI[[i]]$hyperrectangle[1,], CI[[i]]$hyperrectangle[2,], truth)),
                             group =  rep(c("lB","uB","truth"),each = 3),
                             type = c(rep("Boostrap 95% CI", 6), rep("True function",3)))
   dataPlot <- rbind(dataPlot, newDataPlot)
@@ -48,14 +48,14 @@ for (i in 1:length(CI))
 ## Plot CI's
 ##
 bitmap("pics/FitKEModelLogNorm.tiff",res = 300, width = 5,height = 5)
-library(ggplot2)
-ggplot(dataPlot, aes(x = a, y  = value, group = group)) + 
-  geom_line(aes(linetype = type)) + 
-  labs(y = "", linetype = "", x = "") + 
-  facet_wrap(~parameter, ncol = 2, scales = "free") + 
-  theme(legend.position = c(7/8, 1/8), legend.justification = c(1, 0)) 
+plot<-ggplot(dataPlot, aes(x = a, y  = value, group = group)) +
+  geom_line(aes(linetype = type)) +
+  labs(y = "", linetype = "", x = "") +
+  facet_wrap(~parameter, ncol = 2, scales = "free") +
+  theme(legend.position = c(7/8, 1/8), legend.justification = c(1, 0))
 dev.off()
 # The command below only works for Mac OS X systems
-# It converts to a png format without loss 
-# system("sips -s format png pics/FitKEModelLogNorm.tiff --out pics/FitKEModelLogNorm.png") 
+# It converts to a png format without loss
+# system("sips -s format png pics/FitKEModelLogNorm.tiff --out pics/FitKEModelLogNorm.png")
 
+ggsave(plot,file = "pics/Figure13_FitKEModelLogNorm.svg", width = 5,height = 5,dpi=300)

@@ -3,6 +3,8 @@ remove(list = ls())
 library(DistributionPty)
 library(plyr)
 library(dplyr)
+library(svglite)
+
 
 ###
 ### Parameters of the true distribution function
@@ -103,11 +105,12 @@ plot <- ggplot(dataPlot, aes(x = q, y = value)) +
 
 
 gtext <-textGrob("a", y = -0.02)
-g <- ggplotGrob(plot + annotation_custom(gtext,xmin = 29, xmax = 29, ymin = -Inf, ymax = Inf))
-g$layout$clip[g$layout$name=="panel"] <- "off"
-grid.draw(g)
+plot <- ggplotGrob(plot + annotation_custom(gtext,xmin = 29, xmax = 29, ymin = -Inf, ymax = Inf))
+plot$layout$clip[plot$layout$name=="panel"] <- "off"
+grid.draw(plot)
 dev.off()
 # The command below only works for Mac OS X systems
 # It converts to a png format without loss 
 # system("sips -s format png pics/newsVendor_bound_logNorm_70th_percentile.tiff --out pics/newsVendor_bound_logNorm_70th_percentile.png") # To convert in a png format without loss 
 
+ggsave(plot,file = "pics/Figure10_newsVendor_bound_logNorm_70th_percentile.svg", width = 5,height = 5,dpi=300)

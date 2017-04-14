@@ -2,6 +2,7 @@ remove(list = ls())
 
 library(plyr)
 library(dplyr)
+library(svglite)
 
 ### 
 ### Parameters of program 5 
@@ -62,7 +63,7 @@ dataPlot <- dataPlot %>%
 ###
 bitmap("pics/entropy_bound_exp_70th_percentile.tiff",res = 300, width = 5,height = 5) # Save in .tiff for better resolution...
 library(ggplot2)
-ggplot(dataPlot, aes(x = theta, y = value)) + 
+plot <- ggplot(dataPlot, aes(x = theta, y = value)) + 
   geom_line(aes(linetype = method)) + 
   labs(x = expression(theta), y = "Entropic Risk") + 
   labs(linetype = "") + 
@@ -72,3 +73,6 @@ dev.off()
 # It converts to a png format without loss 
 # system("sips -s format png pics/entropy_bound_exp_70th_percentile.tiff --out pics/entropy_bound_exp_70th_percentile.png")
 
+# Save in SVG format for "Operation Research Journal"
+ggsave(plot,file = "pics/Figure9_entropy_bound_exp_70th_percentile.svg", width = 5,height = 5,dpi=300)
+  
