@@ -27,6 +27,7 @@ save(CI,file = "data/syntDatalogNormalCI.RData")
 ###
 ### Reformat CI as a data frame
 ###
+load("data/syntDatalogNormalCI.RData")
 dataPlot <- NULL
 for (i in 1:length(CI))
 {
@@ -59,3 +60,5 @@ dev.off()
 # system("sips -s format png pics/FitKEModelLogNorm.tiff --out pics/FitKEModelLogNorm.png")
 
 ggsave(plot,file = "pics/Figure13_FitKEModelLogNorm.svg", width = 5,height = 5,dpi=300)
+ggsave(plot,file = "pics/Figure13_FitKEModelLogNorm.pdf", width = 5,height = 5,dpi=300)
+

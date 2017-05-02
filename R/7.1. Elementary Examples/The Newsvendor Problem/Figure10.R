@@ -114,3 +114,5 @@ dev.off()
 # system("sips -s format png pics/newsVendor_bound_logNorm_70th_percentile.tiff --out pics/newsVendor_bound_logNorm_70th_percentile.png") # To convert in a png format without loss 
 
 ggsave(plot,file = "pics/Figure10_newsVendor_bound_logNorm_70th_percentile.svg", width = 5,height = 5,dpi=300)
+ggsave(plot,file = "pics/Figure10_newsVendor_bound_logNorm_70th_percentile.pdf", width = 5,height = 5,dpi=300)
+

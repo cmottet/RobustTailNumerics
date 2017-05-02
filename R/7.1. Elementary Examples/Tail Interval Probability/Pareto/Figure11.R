@@ -30,6 +30,7 @@ plot <- ggplot(dataPlot, aes(xmin = aLperc, xmax = aUperc,  ymin = pc, ymax = pd
   guides(fill = guide_colorbar(barwidth = 0.5, barheight = 20, title.position = "right"))+
   theme(legend.title = element_text(angle = 90))
 ggsave(plot,file= "pics/Figure11_runSyntheticPareto.svg",dpi = 300, width = 5,height = 5)
+ggsave(plot,file= "pics/Figure11_runSyntheticPareto.pdf",dpi = 300, width = 5,height = 5)
 
 dev.off()
 # The command below only works for Mac OS X systems

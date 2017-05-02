@@ -83,7 +83,7 @@
 <rect x='216.36' y='307.18' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #F2F2F2;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
 <line x1='218.09' y1='315.82' x2='231.91' y2='315.82' style='stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
 <g clip-path='url(#cpMHwzNjB8MzYwfDA=)'><text x='235.80' y='267.19' style='font-size: 8.80px; font-family: Arial;' textLength='86.55px' lengthAdjust='spacingAndGlyphs'>Optimal Upper Bound</text></g>
-<g clip-path='url(#cpMHwzNjB8MzYwfDA=)'><text x='235.80' y='284.47' style='font-size: 8.80px; font-family: Arial;' textLength='77.55px' lengthAdjust='spacingAndGlyphs'>Exponental Density</text></g>
+<g clip-path='url(#cpMHwzNjB8MzYwfDA=)'><text x='235.80' y='284.47' style='font-size: 8.80px; font-family: Arial;' textLength='79.55px' lengthAdjust='spacingAndGlyphs'>Exponential Density</text></g>
 <g clip-path='url(#cpMHwzNjB8MzYwfDA=)'><text x='235.80' y='301.75' style='font-size: 8.80px; font-family: Arial;' textLength='24.51px' lengthAdjust='spacingAndGlyphs'>2-PLT</text></g>
 <g clip-path='url(#cpMHwzNjB8MzYwfDA=)'><text x='235.80' y='319.03' style='font-size: 8.80px; font-family: Arial;' textLength='113.05px' lengthAdjust='spacingAndGlyphs'>Mixture of Pareto and 2-PLT</text></g>
 </svg>

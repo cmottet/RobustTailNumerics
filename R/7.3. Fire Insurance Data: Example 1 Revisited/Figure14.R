@@ -23,8 +23,8 @@ CI <- RobustTail::getCIMomentAndDerivatives(sample,
                                      alpha = 0.05,
                                      bootSample = TRUE,
                                      mc.cores = 1) # Increase the number of cores to use parallel computing
-save(CI,file = "data/datafireinsuranceCI.RData")
-
+#save(CI,file = "data/datafireinsuranceCI.RData")
+load("data/datafireinsuranceCI.RData")
 ###
 ### Transform the CI's in a data frame format
 ###
@@ -57,3 +57,4 @@ dev.off()
 # system("sips -s format png pics/FitKEFire.tiff --out pics/FitKEFire.png")
 
 ggsave(plot,file = "pics/Figure14_FitKEFire.svg", width = 5,height = 5,dpi=300)
+ggsave(plot,file = "pics/Figure14_FitKEFire.pdf", width = 5,height = 5,dpi=300)

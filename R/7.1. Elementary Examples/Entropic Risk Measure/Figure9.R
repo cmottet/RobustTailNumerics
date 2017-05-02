@@ -29,7 +29,7 @@ theta <- optimBound$theta
 # Entropic risk measure value for the true standard exponential distribution
 dataPlot <- select(optimBound, theta, value = bound) %>%  
   transform(method = "Optimal Upper Bound") %>%
-  rbind(data.frame(theta, value = -1/theta*log(theta + 1),method = "Exponental Density"))
+  rbind(data.frame(theta, value = -1/theta*log(theta + 1),method = "Exponential Density"))
 
 # Entropic risk measure value for some 2-PLT feasible solution of program (2)
 P <- RobustTail::getDistribution(mu,sigma, x1 = mu/5)
@@ -75,4 +75,4 @@ dev.off()
 
 # Save in SVG format for "Operation Research Journal"
 ggsave(plot,file = "pics/Figure9_entropy_bound_exp_70th_percentile.svg", width = 5,height = 5,dpi=300)
-  
+ggsave(plot,file = "pics/Figure9_entropy_bound_exp_70th_percentile.pdf", width = 5,height = 5,dpi=300)
