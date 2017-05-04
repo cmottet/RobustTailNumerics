@@ -199,11 +199,11 @@
 <polyline points='38.54,259.65 41.28,259.65 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
 <polyline points='38.54,227.54 41.28,227.54 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
 <polyline points='38.54,195.43 41.28,195.43 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
-<rect x='163.01' y='233.34' width='152.35' height='58.09' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
-<rect x='168.68' y='251.20' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #F2F2F2;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
-<line x1='170.41' y1='259.84' x2='184.23' y2='259.84' style='stroke-width: 1.07; stroke-linecap: butt;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
-<rect x='168.68' y='268.48' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #F2F2F2;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
-<line x1='170.41' y1='277.12' x2='184.23' y2='277.12' style='stroke-width: 1.07; stroke-dasharray: 2.85,2.85; stroke-linecap: butt;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
-<g clip-path='url(#cpMHwzNjB8MzYwfDA=)'><text x='188.12' y='263.06' style='font-size: 8.80px; font-family: Arial;' textLength='68.04px' lengthAdjust='spacingAndGlyphs'>Boostrap 95% CI</text></g>
-<g clip-path='url(#cpMHwzNjB8MzYwfDA=)'><text x='188.12' y='280.34' style='font-size: 8.80px; font-family: Arial;' textLength='121.57px' lengthAdjust='spacingAndGlyphs'>Boostraped estimated function</text></g>
+<rect x='208.24' y='233.34' width='142.84' height='58.09' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
+<rect x='213.91' y='251.20' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #F2F2F2;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
+<line x1='215.63' y1='259.84' x2='229.46' y2='259.84' style='stroke-width: 1.07; stroke-linecap: butt;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
+<rect x='213.91' y='268.48' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #F2F2F2;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
+<line x1='215.63' y1='277.12' x2='229.46' y2='277.12' style='stroke-width: 1.07; stroke-dasharray: 2.85,2.85; stroke-linecap: butt;' clip-path='url(#cpMHwzNjB8MzYwfDA=)' />
+<g clip-path='url(#cpMHwzNjB8MzYwfDA=)'><text x='233.35' y='263.06' style='font-size: 8.80px; font-family: Arial;' textLength='68.04px' lengthAdjust='spacingAndGlyphs'>Boostrap 95% CI</text></g>
+<g clip-path='url(#cpMHwzNjB8MzYwfDA=)'><text x='233.35' y='280.34' style='font-size: 8.80px; font-family: Arial;' textLength='112.06px' lengthAdjust='spacingAndGlyphs'>Boostrap-estimated function</text></g>
 </svg>

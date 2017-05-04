@@ -38,7 +38,7 @@ for (i in 1:length(CI))
                             parameter = rep(c("Density derivative function", "Density function", "Tail distribution function"),3),
                             value =  as.numeric(c(CI[[i]]$hyperrectangle[1,], CI[[i]]$hyperrectangle[2,], as.numeric(apply(bootSample,2,mean)))),
                             group = rep(c("lB", "uB", "Fhat"),each  = 3),
-                            type = c(rep("Boostrap 95% CI", 6),rep("Boostraped estimated function", 3) ))
+                            type = c(rep("Boostrap 95% CI", 6),rep("Boostrap-estimated function", 3) ))
   dataPlot <- rbind(dataPlot, newDataPlot)
 }
 
@@ -50,7 +50,7 @@ plot<-ggplot(dataPlot, aes(x = a, y  = value, group = group)) +
   geom_line(aes(linetype = type)) +
   labs(y = "", linetype = "", x = "") +
   facet_wrap(~parameter, ncol = 2, scales = "free") +
-  theme(legend.position = c(7/8, 1/8), legend.justification = c(1, 0))
+  theme(legend.position = c(7/8, 1/8), legend.justification = c(0.75, 0))
 dev.off()
 # The command below only works for Mac OS X systems
 # It converts to a png format without loss
